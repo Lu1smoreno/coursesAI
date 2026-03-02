@@ -1,0 +1,605 @@
+import React, { useState, useEffect, useMemo } from 'react';
+import { Search, ChevronDown, User, BookOpen, Bot, Mail, Phone, Linkedin, ExternalLink, X, Terminal, ShieldAlert, Cpu, ArrowDown } from 'lucide-react';
+
+// --- BASE DE DATOS PARA EL REPORTE COMPLETO Y EL BUSCADOR ---
+// Aquí puedes pegar cualquier texto nuevo. El sistema lo maquetará automáticamente.
+// Usa '#' para títulos grandes, '##' para subtítulos, y '- ' para listas.
+const RAW_REPORT = `
+# Estrategias de Capacitación Técnica en Inteligencia Artificial
+## Ecosistemas de Código Abierto, Marcos Agénticos y Recursos Educativos de Vanguardia
+
+La evolución de la inteligencia artificial hacia sistemas agénticos y autónomos durante el periodo 2024-2026 ha redefinido el panorama del desarrollo de software y la productividad profesional. Lo que anteriormente se consideraba una interacción lineal con modelos de lenguaje ha transitado hacia una orquestación compleja de procesos donde la inteligencia artificial no solo genera texto, sino que razona, planifica y ejecuta tareas en entornos del mundo real. 
+
+En este contexto, la capacitación técnica ya no depende exclusivamente de las instituciones académicas tradicionales, sino que se ha democratizado a través de repositorios de código abierto en GitHub y currículos educativos gratuitos proporcionados por los principales laboratorios de investigación, como Anthropic, Google y DeepLearning.AI. Este informe detalla de manera exhaustiva las rutas de aprendizaje más efectivas para dominar estas tecnologías, priorizando recursos gratuitos y herramientas de vanguardia como OpenClaw y el Model Context Protocol.
+
+## El Ecosistema Educativo de Anthropic y la Maestría de Claude
+Anthropic ha establecido un estándar de transparencia y educación abierta al liberar gran parte de su currículo interno para desarrolladores y usuarios avanzados. La estrategia de la compañía se centra en la "Fluidez en IA", un concepto que va más allá del uso básico y abarca la comprensión profunda de cómo los modelos procesan la información y cómo interactúan de manera ética y segura con los sistemas humanos.
+
+### Anthropic Academy y la Formación Certificada
+A través de Anthropic Academy y la plataforma Skilljar, la empresa ofrece una serie de cursos estructurados que permiten a los estudiantes obtener certificados de finalización tras demostrar competencia en el uso de sus modelos. Estos cursos están diseñados para cubrir todo el espectro de necesidades, desde la alfabetización básica hasta la implementación de infraestructuras empresariales complejas.
+
+- Claude 101 (Principiante): Fundamentos, características principales y casos de uso diario.
+- AI Fluency: Framework & Foundations (Todos): Colaboración ética, seguridad y eficacia en la iteración.
+- Building with the Claude API (Intermedio): Implementación técnica, SDKs y gestión de parámetros.
+- Introduction to Model Context Protocol (Avanzado): Construcción de servidores y clientes MCP con Python.
+- Claude Code in Action (Intermedio): Integración de asistentes agénticos en el flujo de desarrollo.
+
+La relevancia de estos cursos reside en su enfoque práctico. Por ejemplo, el curso sobre Model Context Protocol (MCP) enseña a los desarrolladores a conectar a Claude con servicios externos, bases de datos y herramientas locales, superando la limitación de los modelos aislados que no pueden acceder a datos en tiempo real. 
+
+## Ingeniería de Prompts: El Tutorial Interactivo de GitHub
+Uno de los recursos más valiosos y citados en la industria es el tutorial interactivo de ingeniería de prompts de Anthropic alojado en GitHub. Este repositorio, que cuenta con más de 31,000 estrellas, proporciona un entorno de aprendizaje basado en cuadernos de Jupyter donde los estudiantes practican directamente con la API de Claude. 
+
+El uso de etiquetas XML (por ejemplo, <instrucciones> y <datos>) es una de las recomendaciones más potentes de Anthropic, ya que permite que el modelo distinga claramente entre lo que debe hacer y la información que debe procesar, lo que resulta vital en tareas de análisis de documentos extensos o bases de código.
+
+## Agentes de IA: Marcos de Trabajo y Orquestación Autónoma
+El aprendizaje sobre agentes representa la transición de la IA conversacional a la IA operativa. Un agente se define como un sistema capaz de razonar sobre una meta, planificar los pasos necesarios, ejecutar acciones mediante herramientas externas y evaluar sus propios resultados para iterar hasta completar la tarea.
+
+### Principales Marcos de Desarrollo
+Para aprender a construir estos sistemas, es indispensable explorar los repositorios que dominan el ecosistema de orquestación agéntica:
+- LangChain: Marco estándar para conectar LLMs con herramientas y memoria.
+- CrewAI: Orquestación de equipos de IA basados en roles y colaboración.
+- LangGraph: Extensión de LangChain para flujos de trabajo cíclicos y con estado.
+- MetaGPT: Simulación de una empresa de software con agentes especializados.
+
+DeepLearning.AI, bajo la dirección de Andrew Ng, ofrece una serie de "Short Courses" gratuitos que son esenciales para entender los patrones de diseño agéntico. El curso "Agentic AI" es particularmente relevante, ya que enseña los cuatro patrones fundamentales que permiten la autonomía: Reflexión, Uso de herramientas, Planificación y Flujos multi-agente.
+
+## OpenClaw: El Futuro del Asistente Personal Local
+OpenClaw ha emergido como uno de los proyectos más disruptivos en el espacio de la IA personal, alcanzando las 247,000 estrellas en GitHub en un tiempo récord. Su propuesta fundamental es la soberanía de los datos: un asistente que se ejecuta en el hardware del usuario y se comunica a través de las aplicaciones que este ya utiliza.
+
+Una innovación clave de OpenClaw es el uso de archivos Markdown y YAML para definir el "alma" (soul.md) y las capacidades del agente. Esto permite que el usuario tenga un control total y auditable sobre lo que el asistente sabe y cómo se comporta. Además, implementa un sistema de "Heartbeat" (latido) que permite al agente ser proactivo.
+
+El ecosistema de habilidades se gestiona mediante ClawHub. El proceso de instalación es sencillo mediante el comando clawhub install <nombre-habilidad>. Sin embargo, la apertura del sistema ha llevado a desafíos de seguridad significativos.
+
+### Seguridad y la Campaña ClawHavoc
+Debido a su rápido crecimiento, OpenClaw se convirtió en un objetivo para ataques. En febrero de 2026, se identificaron habilidades maliciosas en la campaña "ClawHavoc". Como resultado, se han establecido mejores prácticas de seguridad:
+- Aislamiento en Docker: Ejecutar las sesiones del agente dentro de contenedores.
+- Aprobación manual de comandos: Activar la configuración exec.approval.
+- Auditoría de Skills: Verificar la reputación del autor en GitHub antes de instalar.
+
+## Rutas Técnicas: RAG y Model Context Protocol (MCP)
+Para que un profesional destaque, es necesario dominar dos tecnologías fundamentales:
+- RAG (Generación Aumentada por Recuperación): Resuelve el problema de las alucinaciones al permitir que el modelo consulte documentos externos antes de responder.
+- MCP (Model Context Protocol): Una especificación abierta que permite a los modelos descubrir e interactuar con fuentes de datos de manera estandarizada. Anthropic ha posicionado el MCP como el corazón de su estrategia agéntica.
+
+## El Rol de la Codificación con IA: Claude Code y Vibe Coding
+Claude Code es un asistente de codificación altamente agéntico que se ejecuta directamente en la terminal. A diferencia de los autocompletados tradicionales, puede analizar bases de código completas, ejecutar pruebas unitarias y realizar cambios en múltiples archivos simultáneamente.
+
+El curso "Vibe Coding 101 with Replit" explora cómo los desarrolladores modernos están pasando de escribir cada línea de código a "vibrar" o describir sus ideas a agentes que generan la implementación. La habilidad del futuro es estructurar el pensamiento y las instrucciones para que los agentes ejecuten la visión técnica.
+`;
+
+// Procesamos el texto para la búsqueda preservando el índice original para el scroll
+const searchCorpus = RAW_REPORT.split('\n').map((line, idx) => ({
+  text: line,
+  originalIndex: idx
+})).filter(item => item.text.trim() !== '');
+
+// Componente auxiliar para resaltar texto
+const Highlighter = ({ text, highlight }) => {
+  if (!highlight.trim()) return <>{text}</>;
+  // Escapar caracteres especiales en la búsqueda
+  const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escapeRegExp(highlight)})`, 'gi');
+  const parts = text.split(regex);
+  
+  return (
+    <>
+      {parts.map((part, i) => 
+        regex.test(part) 
+          ? <mark key={i} className="bg-emerald-500/50 text-emerald-50 rounded px-1 shadow-[0_0_10px_rgba(16,185,129,0.5)]">{part}</mark> 
+          : part
+      )}
+    </>
+  );
+};
+
+export default function App() {
+  const [activeModal, setActiveModal] = useState(null);
+  const [isCursosHovered, setIsCursosHovered] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  // Lógica de búsqueda
+  useEffect(() => {
+    if (searchQuery.trim().length > 2) {
+      const results = searchCorpus.filter(item => 
+        item.text.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSearchResults(results);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchQuery]);
+
+  const closeModal = () => setActiveModal(null);
+
+  const scrollToParagraph = (index) => {
+    const element = document.getElementById(`p-${index}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Efecto visual al llegar (un flash sutil)
+      element.classList.add('bg-white/10');
+      setTimeout(() => element.classList.remove('bg-white/10'), 1500);
+    }
+  };
+
+  const scrollToReport = () => {
+    const element = document.getElementById('deep-research-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Renderizador dinámico de Markdown simple para el Reporte
+  const renderReportContent = () => {
+    return RAW_REPORT.split('\n').map((line, idx) => {
+      const trimmed = line.trim();
+      if (!trimmed) return null;
+      
+      const baseProps = {
+        key: idx,
+        id: `p-${idx}`,
+        className: "transition-colors duration-500 rounded p-1 -mx-1"
+      };
+
+      if (trimmed.startsWith('# ')) {
+        return (
+          <div {...baseProps} className={`${baseProps.className} mt-8 mb-6`}>
+            <h1 className="text-4xl md:text-5xl font-light text-white tracking-wide leading-tight">
+              <Highlighter text={trimmed.replace('# ', '')} highlight={searchQuery} />
+            </h1>
+          </div>
+        );
+      }
+      if (trimmed.startsWith('## ')) {
+        return (
+          <div {...baseProps} className={`${baseProps.className} mt-12 mb-4 border-b border-white/10 pb-2`}>
+            <h2 className="text-2xl md:text-3xl font-light text-emerald-400">
+              <Highlighter text={trimmed.replace('## ', '')} highlight={searchQuery} />
+            </h2>
+          </div>
+        );
+      }
+      if (trimmed.startsWith('### ')) {
+        return (
+          <div {...baseProps} className={`${baseProps.className} mt-8 mb-3`}>
+            <h3 className="text-xl md:text-2xl font-medium text-white">
+              <Highlighter text={trimmed.replace('### ', '')} highlight={searchQuery} />
+            </h3>
+          </div>
+        );
+      }
+      if (trimmed.startsWith('- ')) {
+        return (
+          <div {...baseProps} className={`${baseProps.className} ml-6 mb-2`}>
+            <li className="text-gray-300 list-disc text-lg font-light leading-relaxed">
+              <Highlighter text={trimmed.replace('- ', '')} highlight={searchQuery} />
+            </li>
+          </div>
+        );
+      }
+      
+      return (
+        <div {...baseProps} className={`${baseProps.className} mb-5`}>
+          <p className="text-gray-300 font-light leading-relaxed text-lg md:text-xl">
+            <Highlighter text={trimmed} highlight={searchQuery} />
+          </p>
+        </div>
+      );
+    });
+  };
+
+  // COMPONENTES DE CONTENIDO DE LOS MODALES MEJORADOS
+  const CursosContent = ({ level }) => {
+    const content = {
+      principiante: (
+        <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <h2 className="text-3xl md:text-4xl font-light tracking-wide text-white flex items-center gap-3">
+              <BookOpen className="text-emerald-400" /> Nivel Principiante
+            </h2>
+            <span className="hidden md:inline-block bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full text-sm font-medium border border-emerald-500/30">
+              Fase Fundacional
+            </span>
+          </div>
+          <p className="text-gray-300 font-light leading-relaxed text-lg">
+            Fundamentos de la IA, comunicación con modelos y fluidez esencial. Ideal para entender qué ocurre sin escribir una sola línea de código y dominar la ingeniería de prompts.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-all hover:-translate-y-1 group">
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="text-xl font-medium text-white">Anthropic Academy</h3>
+                <span className="bg-white/10 text-gray-300 text-xs px-2 py-1 rounded">Certificado</span>
+              </div>
+              <p className="text-sm text-gray-400 mb-6">Cursos Claude 101 y AI Fluency. Aprende a iterar con eficacia, evitando alucinaciones y priorizando la seguridad.</p>
+              <a href="https://www.anthropic.com/learn" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 px-4 py-2 rounded-lg text-sm font-medium hover:bg-emerald-500/30 transition-colors">
+                Visitar Anthropic Learn <ExternalLink size={16}/>
+              </a>
+            </div>
+            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white/10 transition-all hover:-translate-y-1 group">
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="text-xl font-medium text-white">Google AI Studio</h3>
+                <span className="bg-blue-500/20 text-blue-300 text-xs px-2 py-1 rounded">Práctico</span>
+              </div>
+              <p className="text-sm text-gray-400 mb-6">El entorno de pruebas más rápido, gratuito y accesible para probar prompts con la familia Gemini.</p>
+              <a href="https://aistudio.google.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-500/30 transition-colors">
+                Abrir AI Studio <ExternalLink size={16}/>
+              </a>
+            </div>
+            <div className="bg-gradient-to-r from-emerald-900/30 to-blue-900/30 border border-emerald-500/20 p-6 rounded-2xl transition-all col-span-1 md:col-span-2">
+              <h3 className="text-xl font-medium text-white mb-2 flex items-center gap-2">
+                <Terminal size={18} className="text-emerald-400"/> Ingeniería de Prompts (GitHub)
+              </h3>
+              <p className="text-sm text-gray-300">
+                Tutorial interactivo de Anthropic (+31k estrellas). La clave del éxito actual es dominar el uso de etiquetas XML <code>&lt;instrucciones&gt;</code> y <code>&lt;datos&gt;</code> para separar la lógica del contenido, guiando al modelo sin fallos estructurales.
+              </p>
+            </div>
+          </div>
+        </div>
+      ),
+      avanzado: (
+        <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <h2 className="text-3xl md:text-4xl font-light tracking-wide text-white flex items-center gap-3">
+              <Cpu className="text-blue-400" /> Nivel Avanzado
+            </h2>
+            <span className="hidden md:inline-block bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full text-sm font-medium border border-blue-500/30">
+              Orquestación
+            </span>
+          </div>
+          <p className="text-gray-300 font-light leading-relaxed text-lg">
+            Transición a la orquestación agéntica. Aprende a crear sistemas independientes donde la IA planifica, investiga en internet y ejecuta tareas de forma autónoma.
+          </p>
+          <div className="space-y-4">
+            <div className="bg-gradient-to-r from-blue-900/40 to-black/40 border-l-4 border-blue-500 p-6 rounded-r-2xl shadow-lg">
+              <h4 className="text-xl font-medium text-white mb-2 flex justify-between items-center">
+                <span>Agentic AI (DeepLearning.AI)</span>
+                <span className="text-xs font-normal text-blue-300 border border-blue-500/30 px-2 py-1 rounded-full">Andrew Ng</span>
+              </h4>
+              <p className="text-sm text-gray-300 mt-1 leading-relaxed">
+                El curso definitivo sobre los 4 patrones de autonomía: <strong>Reflexión</strong> (autocorrección), <strong>Uso de herramientas</strong> (APIs), <strong>Planificación</strong> (división de tareas) y <strong>Flujos Multi-agente</strong>.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div className="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 transition-colors">
+                <h4 className="font-medium text-white mb-2 text-lg">CrewAI</h4>
+                <p className="text-sm text-gray-400">Orquestación de equipos de IA basados en roles (ej: configuras un 'Investigador' y un 'Escritor' que colaboran entre sí).</p>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-5 rounded-2xl hover:bg-white/10 transition-colors">
+                <h4 className="font-medium text-white mb-2 text-lg">LangGraph</h4>
+                <p className="text-sm text-gray-400">La evolución de LangChain. Permite flujos de trabajo cíclicos, con estado guardado y memoria a largo plazo para agentes complejos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+      experto: (
+        <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <h2 className="text-3xl md:text-4xl font-light tracking-wide text-white flex items-center gap-3">
+              <Terminal className="text-purple-400" /> Nivel Experto
+            </h2>
+            <span className="hidden md:inline-block bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm font-medium border border-purple-500/30">
+              Arquitectura Enterprise
+            </span>
+          </div>
+          <p className="text-gray-300 font-light leading-relaxed text-lg">
+            Arquitecturas complejas, bases vectoriales, protocolos universales y Vibe Coding. El estándar profesional técnico para 2026.
+          </p>
+          <div className="grid gap-4">
+             <div className="bg-white/5 border border-white/10 p-6 rounded-2xl group hover:border-purple-500/50 transition-colors">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2 bg-purple-500/20 rounded-lg"><Cpu size={20} className="text-purple-400"/></div>
+                <h3 className="text-xl font-medium text-white">Model Context Protocol (MCP)</h3>
+              </div>
+              <p className="text-sm text-gray-400 mt-2">El estándar abierto impulsado por Anthropic. Permite conectar modelos de IA a bases de datos (SQL, GitHub, Slack) de forma segura y universal. Es el verdadero "pegamento" de los agentes.</p>
+            </div>
+            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl group hover:border-emerald-500/50 transition-colors">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2 bg-emerald-500/20 rounded-lg"><BookOpen size={20} className="text-emerald-400"/></div>
+                <h3 className="text-xl font-medium text-white">RAG Avanzado (LlamaIndex)</h3>
+              </div>
+              <p className="text-sm text-gray-400 mt-2">Generación Aumentada por Recuperación. Dominio de Chunking, búsqueda semántica híbrida y uso de frameworks de evaluación (Evals) para inyectar documentos masivos sin alucinaciones.</p>
+            </div>
+            <div className="bg-white/5 border border-white/10 p-6 rounded-2xl group hover:border-blue-500/50 transition-colors">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2 bg-blue-500/20 rounded-lg"><Bot size={20} className="text-blue-400"/></div>
+                <h3 className="text-xl font-medium text-white">Claude Code en Producción</h3>
+              </div>
+              <p className="text-sm text-gray-400 mt-2">Implementación de agentes que leen repositorios completos de código, ejecutan tests unitarios en la terminal y realizan correcciones arquitectónicas de forma autónoma.</p>
+            </div>
+          </div>
+        </div>
+      )
+    };
+    return content[level];
+  };
+
+  const AgentesContent = () => (
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-4">
+      <div className="border-b border-white/10 pb-6">
+        <h2 className="text-4xl font-light tracking-wide text-white flex items-center gap-4 mb-4">
+          <Bot size={48} className="text-amber-400" /> Ecosistema de Agentes
+        </h2>
+        <p className="text-gray-300 text-lg font-light max-w-3xl">
+          El paso definitivo a la <strong>IA operativa</strong>: sistemas que no solo conversan, sino que razonan sobre una meta compleja, planifican iteraciones y ejecutan acciones reales en tu ordenador o en la nube mediante herramientas externas.
+        </p>
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-6">
+        {/* OpenClaw - Columna Izquierda */}
+        <div className="bg-gradient-to-b from-black/60 to-black/30 border border-green-500/20 p-6 md:p-8 rounded-3xl backdrop-blur-md relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 blur-3xl rounded-full pointer-events-none" />
+          
+          <h3 className="text-2xl font-medium text-white flex items-center gap-3 mb-4 relative z-10">
+            <Terminal className="text-green-400" size={28} /> OpenClaw
+          </h3>
+          <p className="text-sm text-gray-300 mb-6 leading-relaxed relative z-10">
+            El asistente personal <strong>local-first</strong> más disruptivo. Comunicación vía Gateway y control total de identidad mediante archivos Markdown (<code>soul.md</code>). Posee proactividad real gracias a su sistema de Heartbeat interno.
+          </p>
+          
+          <div className="bg-black/80 p-4 rounded-xl border border-green-500/30 mb-6 font-mono text-sm text-green-300 shadow-inner relative z-10">
+            <span className="text-gray-500 select-none"># Instalar nuevas habilidades desde el registro oficial</span><br/>
+            <span className="text-green-500 font-bold">$</span> clawhub install &lt;nombre-habilidad&gt;
+          </div>
+          
+          <div className="flex items-start gap-3 bg-red-950/40 border border-red-500/40 p-4 rounded-xl relative z-10">
+            <ShieldAlert size={24} className="text-red-400 flex-shrink-0 mt-1" />
+            <div>
+              <p className="text-sm text-white font-medium mb-1">Alerta de Seguridad (ClawHavoc)</p>
+              <p className="text-xs text-gray-300 leading-relaxed">
+                Aislar siempre la ejecución en <strong>Docker</strong> y activar <code>exec.approval</code> para requerir autorización humana antes de que el agente ejecute comandos críticos en la terminal.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Qwen & Claude - Columna Derecha */}
+        <div className="space-y-6">
+          {/* Qwen */}
+          <div className="bg-white/5 border border-white/10 p-6 md:p-8 rounded-3xl hover:bg-white/10 transition-colors">
+            <h3 className="text-xl font-medium text-white mb-3 flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></span>
+              Qwen: La Alternativa Económica
+            </h3>
+            <p className="text-sm text-gray-400 leading-relaxed">
+              La familia de modelos open-weight de Alibaba (como Qwen 2.5 Coder). Es la alternativa <strong>súper barata</strong> y extremadamente eficiente para correr agentes a nivel local. Logra razonamiento agéntico casi al mismo nivel que modelos premium comerciales, por una ínfima fracción del coste de hardware.
+            </p>
+          </div>
+
+          {/* Claude Code */}
+          <div className="bg-gradient-to-br from-indigo-900/30 to-purple-900/30 border border-indigo-500/30 p-6 md:p-8 rounded-3xl">
+            <h3 className="text-xl font-medium text-white mb-3">Claude Code & Vibe Coding</h3>
+            <p className="text-sm text-gray-300 leading-relaxed mb-4">
+              Claude Code vive directamente en tu terminal de desarrollo. Tiene la capacidad de analizar bases de código masivas, ejecutar suites de tests y aplicar correcciones en docenas de archivos a la vez.
+            </p>
+            <div className="inline-block bg-indigo-500/20 text-indigo-200 text-xs px-3 py-1 rounded-lg border border-indigo-500/30">
+              <strong>Vibe Coding:</strong> Estructurar el pensamiento y describir ideas verbalmente mientras los agentes escriben la implementación.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const SobreMiContent = () => (
+    <div className="flex flex-col items-center justify-center text-center space-y-8 py-4 animate-in fade-in zoom-in-95 duration-500">
+      <div className="relative">
+        <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full" />
+        <div className="w-32 h-32 bg-gradient-to-tr from-gray-800 to-gray-600 rounded-full flex items-center justify-center border-4 border-white/10 relative z-10 shadow-2xl overflow-hidden">
+          <User size={50} className="text-white" />
+        </div>
+      </div>
+      
+      <div>
+        <h2 className="text-4xl md:text-5xl font-light tracking-wide text-white mb-3">Luis Moreno</h2>
+        <p className="text-emerald-400 font-medium tracking-widest uppercase text-sm mb-4">Especialista en Inteligencia Artificial & Automatización</p>
+        <p className="text-gray-400 max-w-xl mx-auto font-light leading-relaxed text-lg">
+          Apasionado por la integración de ecosistemas agénticos, optimización de flujos de trabajo con LLMs de vanguardia y despliegue de soluciones RAG. Construyendo el puente entre la IA teórica y la productividad empresarial real.
+        </p>
+      </div>
+
+      <div className="flex flex-wrap justify-center gap-2 max-w-2xl">
+        {['Ecosistemas Agénticos', 'OpenClaw', 'Claude API', 'Model Context Protocol (MCP)', 'Sistemas RAG', 'Ingeniería de Prompts', 'Vibe Coding'].map(skill => (
+          <span key={skill} className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs text-gray-300 font-mono hover:bg-white/10 transition-colors cursor-default">
+            {skill}
+          </span>
+        ))}
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl mt-8">
+        <a href="tel:+34640570611" className="flex flex-col items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 p-6 rounded-2xl transition-all hover:-translate-y-1 text-white group">
+          <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-full group-hover:bg-emerald-500/30 transition-colors">
+            <Phone className="text-emerald-400" size={24} />
+          </div>
+          <span className="font-light tracking-wider text-sm">+34 640 570 611</span>
+        </a>
+        <a href="mailto:luismorenoglobal@gmail.com" className="flex flex-col items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 p-6 rounded-2xl transition-all hover:-translate-y-1 text-white group">
+          <div className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-full group-hover:bg-blue-500/30 transition-colors">
+            <Mail className="text-blue-400" size={24} />
+          </div>
+          <span className="font-light tracking-wide text-sm">luismorenoglobal@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/luis-moreno-moreno" target="_blank" rel="noreferrer" className="flex flex-col items-center justify-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 p-6 rounded-2xl transition-all hover:-translate-y-1 text-white group">
+          <div className="p-4 bg-indigo-500/10 border border-indigo-500/20 rounded-full group-hover:bg-indigo-500/30 transition-colors">
+            <Linkedin className="text-indigo-400" size={24} />
+          </div>
+          <span className="font-light tracking-wide text-sm">/in/luis-moreno-moreno</span>
+        </a>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="relative min-h-screen bg-black overflow-y-auto font-sans selection:bg-emerald-500/30 custom-scrollbar scroll-smooth">
+      {/* Fondo de pantalla fijo (Coche deportivo alta calidad) */}
+      <div 
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-50"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=2070&auto=format&fit=crop')" }}
+      />
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/80 via-black/40 to-black/95" />
+
+      {/* --- SECCIÓN HERO (100vh) --- */}
+      <div className="relative z-10 min-h-screen flex flex-col justify-between pb-8">
+        
+        {/* Navegación Top */}
+        <nav className="flex justify-center items-center pt-8 pb-4 px-6 gap-8 md:gap-16">
+          {/* Dropdown Cursos */}
+          <div 
+            className="relative group"
+            onMouseEnter={() => setIsCursosHovered(true)}
+            onMouseLeave={() => setIsCursosHovered(false)}
+          >
+            <button className="text-white text-lg font-light tracking-wide hover:text-emerald-400 transition-colors flex items-center gap-1">
+              Cursos <ChevronDown size={16} className={`transition-transform duration-300 ${isCursosHovered ? 'rotate-180' : ''}`}/>
+            </button>
+            
+            {/* Submenú Flotante Glassmorphism */}
+            <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-4 w-48 py-2 bg-black/50 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl transition-all duration-300 ${isCursosHovered ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-2 invisible'}`}>
+              <button onClick={() => setActiveModal('principiante')} className="w-full text-left px-6 py-3 text-sm text-gray-200 hover:bg-white/10 hover:text-white transition-colors">
+                Principiante
+              </button>
+              <button onClick={() => setActiveModal('avanzado')} className="w-full text-left px-6 py-3 text-sm text-gray-200 hover:bg-white/10 hover:text-white transition-colors">
+                Avanzado
+              </button>
+              <button onClick={() => setActiveModal('experto')} className="w-full text-left px-6 py-3 text-sm text-gray-200 hover:bg-white/10 hover:text-white transition-colors">
+                Experto
+              </button>
+            </div>
+          </div>
+
+          <button 
+            onClick={() => setActiveModal('agentes')}
+            className="text-white text-lg font-light tracking-wide hover:text-amber-400 transition-colors"
+          >
+            Agentes IA
+          </button>
+
+          <button 
+            onClick={() => setActiveModal('sobre-mi')}
+            className="text-white text-lg font-light tracking-wide hover:text-blue-400 transition-colors"
+          >
+            Sobre mí
+          </button>
+        </nav>
+
+        {/* Buscador Inferior en el Hero */}
+        <div className="w-full max-w-2xl px-4 mx-auto mt-auto mb-8 relative z-40">
+          <div className={`transition-all duration-500 ease-in-out ${isSearchFocused || searchQuery ? '-translate-y-4' : 'translate-y-0'}`}>
+            
+            {/* Resultados Flotantes Rápidos */}
+            {(searchQuery.trim().length > 2) && (
+              <div className="mb-4 bg-black/60 backdrop-blur-xl border border-white/20 rounded-2xl p-4 max-h-60 overflow-y-auto custom-scrollbar shadow-2xl animate-in fade-in slide-in-from-bottom-2">
+                {searchResults.length > 0 ? (
+                  <div className="space-y-2">
+                    {searchResults.map((result, idx) => (
+                      <div 
+                        key={idx}
+                        onClick={() => scrollToParagraph(result.originalIndex)}
+                        className="cursor-pointer hover:bg-white/10 p-3 rounded-lg transition-colors border border-transparent hover:border-white/5"
+                      >
+                        <p className="text-sm text-gray-300 font-light leading-relaxed line-clamp-2">
+                          <Highlighter text={result.text.replace(/^[#-]+\s*/, '')} highlight={searchQuery} />
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-center text-gray-400 text-sm font-light py-4">No se encontraron coincidencias en el análisis.</p>
+                )}
+              </div>
+            )}
+
+            {/* Input Buscador */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+              <div className="relative flex items-center bg-black/40 backdrop-blur-md border border-white/20 rounded-full px-6 py-4 shadow-2xl focus-within:border-white/50 focus-within:bg-black/60 transition-all duration-300">
+                <Search className="text-gray-400 mr-4" size={20} />
+                <input 
+                  type="text"
+                  placeholder="Buscar en el Deep Research completo..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onFocus={() => setIsSearchFocused(true)}
+                  onBlur={() => setIsSearchFocused(false)}
+                  className="bg-transparent border-none outline-none text-white text-lg font-light w-full placeholder-gray-500"
+                />
+                {searchQuery && (
+                  <button onClick={() => setSearchQuery('')} className="text-gray-400 hover:text-white transition-colors">
+                    <X size={18} />
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+          
+          {/* Indicador de Scroll */}
+          <div 
+            onClick={scrollToReport}
+            className="flex flex-col items-center justify-center mt-12 cursor-pointer text-gray-500 hover:text-white transition-colors animate-bounce"
+          >
+            <span className="text-sm font-light tracking-wider uppercase mb-2">Leer Informe Completo</span>
+            <ArrowDown size={24} />
+          </div>
+        </div>
+      </div>
+
+      {/* --- SECCIÓN DEEP RESEARCH (Scroll hacia abajo) --- */}
+      <div id="deep-research-section" className="relative z-20 w-full max-w-5xl mx-auto px-4 md:px-8 py-20 pb-32">
+        <div className="bg-black/40 backdrop-blur-3xl border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.8)] rounded-[2.5rem] p-8 md:p-16">
+          <div className="flex items-center gap-3 mb-8 text-emerald-500 border-b border-white/10 pb-8">
+            <BookOpen size={32} />
+            <span className="text-xl font-light tracking-widest uppercase">Deep Research Analytics</span>
+          </div>
+          
+          <div className="prose prose-invert max-w-none">
+            {renderReportContent()}
+          </div>
+        </div>
+      </div>
+
+      {/* Modales / Overlays Centrales (Fixed z-[100] asegura que SIEMPRE se vean por encima del resto) */}
+      {activeModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+          <div 
+            className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer animate-in fade-in duration-300" 
+            onClick={closeModal}
+          />
+          <div className="relative bg-black/60 backdrop-blur-2xl border border-white/20 shadow-[0_0_80px_rgba(0,0,0,0.8)] rounded-3xl p-6 md:p-12 w-full max-w-5xl max-h-[90vh] overflow-y-auto custom-scrollbar animate-in zoom-in-95 duration-300">
+            <button 
+              onClick={closeModal}
+              className="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-white transition-colors bg-white/5 hover:bg-white/20 p-2 rounded-full z-10"
+            >
+              <X size={24} />
+            </button>
+            
+            {activeModal === 'principiante' && <CursosContent level="principiante" />}
+            {activeModal === 'avanzado' && <CursosContent level="avanzado" />}
+            {activeModal === 'experto' && <CursosContent level="experto" />}
+            {activeModal === 'agentes' && <AgentesContent />}
+            {activeModal === 'sobre-mi' && <SobreMiContent />}
+          </div>
+        </div>
+      )}
+
+      {/* Estilos globales para la scrollbar personalizada */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.2);
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.15);
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 255, 255, 0.3);
+        }
+        html { scroll-behavior: smooth; }
+      `}} />
+    </div>
+  );
+}
